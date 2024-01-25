@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Graduation Countdown</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<style>
+    .social-btn-container {
+        display: flex;
+        align-items: center;
+        margin: 0 50px;
+        width: 100px; 
+        height: 50px;
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.5); /* Warna putih dengan opacity 50% */
+        border-radius: 10px; /* Setengah dari tinggi (lebar) untuk membuat sudut melengkung */
+
+    }
+      /* Style untuk popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+
+    .social-btn {
+        flex: 1;
+        text-align: center;
+        transition: opacity 0.3s ease;
+    }
+
+    .social-btn img {
+        width: 30px; /* Sesuaikan ukuran ikon */
+        height: auto; /* Sesuaikan dengan tinggi container */
+        border-radius: 10px; /* Setengah dari tinggi (lebar) untuk membuat sudut melengkung */
+    }	
+	.social-btn:hover {
+		opacity: 1;
+        transform: scale(1.2);
+    }
+</style>
+
+
+
+
+
+</head>
+<body>
+	<audio id="myAudio" autoplay loop>
+    <source src="bs/ar.mp3" type="audio/mp3">
+</audio>
+	<!--  -->
+	<div class="simpleslide100">
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/1.png');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/2.jpg');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/3.png');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/4.jpg');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/5.png');"></div>
+	</div>
+
+	<div class="size1 overlay1">
+		<!--  -->
+		<div class="size1 flex-col-c-m p-l-15 p-r-15 p-t-50 p-b-50">
+			<h3 class="l1-txt1 txt-center p-b-25">
+				GRADUATION COUNTDOWN
+			</h3>
+
+			<p class="m2-txt1 txt-center p-b-48">
+				Menuju akhir dari perjalanan yang menyenangkan selama 3 Tahun ini
+			</p>
+
+			<div class="flex-w flex-c-m cd100 p-b-33">
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span id="days" class="l2-txt1 p-b-9 days" >00</span>
+					<span for="days" class="s2-txt1" >Days</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span id="hours" class="l2-txt1 p-b-9 hours">00</span>
+					<span for="hours" class="s2-txt1">Hours</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span id="minutes" class="l2-txt1 p-b-9 minutes">00</span>
+					<span for="minutes" class="s2-txt1">Minutes</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span id="seconds" class="l2-txt1 p-b-9 seconds">00</span>
+					<span for="seconds" class="s2-txt1">Seconds</span>
+				</div>
+			</div>
+
+  <form class="w-full flex-w flex-c-m validate-form" id="myForm">
+
+    <div class="wrap-input100 validate-input where1" data-validate="Minimal 1 kata">
+      <input class="input100 placeholder0 s2-txt2" type="text" name="text" placeholder="Kirimkan kata-kata mutiara mu...">
+      <span class="focus-input100"></span>
+    </div>
+
+    <button class="flex-c-m size3 s2-txt3 how-btn1 trans-04 where1" onclick="submitForm()">
+      Kirim
+    </button>
+			</form>
+  
+			<div class="social-btn-container">
+    <a href="https://www.instagram.com/sman6cirebon/" target="_blank" class="social-btn">
+        <img src="images/icons/ig.png" alt="Instagram">
+    </a>
+    <a href="https://smanegeri6cirebon.sch.id/" target="_blank" class="social-btn">
+        <img src="images/icons/web.png" alt="Website">
+    </a>
+</div>
+
+		</div>
+	</div>
+</body>
+<!--===============================================================================================-->	
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script> 
+// Get the form element
+
+const form = document.querySelector('.validate-form');
+
+
+// Add a submit event listener to the form
+
+form.addEventListener('submit', function(event) {
+
+  // Prevent the default form submission behavior
+
+  event.preventDefault();
+
+
+  // Display the pop-up
+
+  Swal.fire({
+
+    title: 'Terima kasih!',
+
+    text: 'Sampai jumpa dikesempatan lain!',
+
+    icon: 'success',
+
+    confirmButtonText: 'Tutup'
+
+  });
+
+});
+  const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+
+const deadline = new Date("May 8, 2024 07:00:00").getTime();
+
+const x = setInterval(() => {
+    const now = new Date().getTime();
+    const t = deadline - now;
+
+    const days = Math.floor(t / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+    const minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((t % (1000 * 60)) / 1000);
+
+    daysEl.innerHTML = days;
+    hoursEl.innerHTML = hours < 10 ? "0" + hours : hours;
+    minutesEl.innerHTML = minutes < 10 ? "0" + minutes : minutes;
+    secondsEl.innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+    if (t < 0) {
+        clearInterval(x);
+        daysEl.innerHTML = "00";
+        hoursEl.innerHTML = "00";
+        minutesEl.innerHTML = "00";
+        secondsEl.innerHTML = "00";
+    }
+}, 1000);
+</script>
+</html>
