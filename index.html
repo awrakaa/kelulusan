@@ -163,7 +163,15 @@ form.addEventListener('submit', function(event) {
     icon: 'success',
 
     confirmButtonText: 'Tutup'
+}).then((result) => {
 
+    // If the user clicked the confirm button, refresh the page
+    form.reset();
+    if (result.isConfirmed) {
+
+      location.reload();
+
+    }
   });
 
 });
